@@ -1,4 +1,4 @@
-Ve.Metrics.StatsDClient
+Ve.Metrics.StatsDClient [![Build status](https://ci.appveyor.com/api/projects/status/n7qstecrnf0etli1?svg=true)](https://ci.appveyor.com/project/andyroyle/ve-metrics-statsdclient-csharp)
 ---
 
 Provides a set of wrappers and utilities for logging to the VE metrics infrastructure
