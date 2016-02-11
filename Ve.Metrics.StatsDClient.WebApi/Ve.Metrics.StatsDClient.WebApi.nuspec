@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>VE Statsd C# Client</title>
+    <authors>Andy Royle</authors>
+    <owners>Andy Royle</owners>
+    <projectUrl>https://github.com/ve-interactive/ve-metrics-statsd-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VE Metrics Statsd client for C#, providing influxdb-specific functionality for statsd</description>
+    <copyright>Copyright 2016</copyright>
+    <releaseNotes>See CHANGELOG.md in the project's GitHub repository.</releaseNotes>
+    <tags>stats statsd metrics influxdb</tags>
+  </metadata>
+  <dependencies>
+    <dependency id="StatsdClient" version="1.2.32" />
+  </dependencies>
+  <files>
+    <file src="..\Ve.Metrics.StatsDClient\bin\Release\Ve.Metrics.StatsDClient.dll" target="lib\net452" /> 
+  </files>
+</package>
