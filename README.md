@@ -3,19 +3,25 @@ Ve.Metrics.StatsDClient
 
 Provides a set of wrappers and utilities for logging to the VE metrics infrastructure
 
-StatsDInfluxWrapper(
+####StatsDInfluxWrapper
 
 This wraps the basic StatsD client in order to provide influxDB specific functionality (i.e. support for tagging).
 
-```
-
-var statsd = new StatsDInfluxWrapper();
+```csharp
+var statsd = new StatsDInfluxWrapper(
+                 new StatsDConfig()
+                 {
+                   Host = "metrics-statsd.ve-ci.com",
+                   Port = 8125,
+                   AppName = "myapp",
+                   Datacenter = "ci"
+                 }));
 
 statsd.LogCount("foo", new Dictionary<string, string>(){ { "bar", "baz" } });
 
 ```
 
-StatsDActionFilter
+####StatsDActionFilter
 
 A HttpActionFilter designed to be used with Asp.Net WebApi. It logs the following info:
 
@@ -27,23 +33,22 @@ A HttpActionFilter designed to be used with Asp.Net WebApi. It logs the followin
 
 ```csharp
 public static class WebApiConfig
-```csharp
+{
     public static void Register(HttpConfiguration config)
-    
-        config.Filters.Add(new StatsDLoggerFilter());
     {
-         config.Filters.Add(new StatsdActionFilter(
-	     new StatsdConfig()
-	     {
-	         Host = "metrics-statsd.ve-ci.com",
-		 AppName = "myapp",
-		 Datacenter = "ci",
-		 Port = 8125
-	     }));
+        config.Filters.Add(new StatsdActionFilter(
+            new StatsdConfig()
+            {
+                Host = "metrics-statsd.ve-ci.com",
+                AppName = "myapp",
+                Datacenter = "ci",
+                Port = 8125
+            }));
     }
+}
 ```
 
-Configuration:
+####Configuration:
 
 Relies on the following settings:
 
