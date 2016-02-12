@@ -20,8 +20,6 @@ namespace Ve.Metrics.StatsDClient.WebApi
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             actionContext.Request.Properties.Add(StopwatchKey, Stopwatch.StartNew());
-            _statsd.LogCount("request", GetRouteData(actionContext));
-
             base.OnActionExecuting(actionContext);
         }
 
@@ -29,7 +27,8 @@ namespace Ve.Metrics.StatsDClient.WebApi
         {
             var stopwatch = (Stopwatch)actionExecutedContext.Request.Properties[StopwatchKey];
             stopwatch.Stop();
-            
+
+            _statsd.LogCount("request", GetRouteData(actionExecutedContext.ActionContext));
             _statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(actionExecutedContext.ActionContext));
 
             if (actionExecutedContext.Exception != null)
