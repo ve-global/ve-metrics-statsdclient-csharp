@@ -12,6 +12,16 @@ namespace Ve.Metrics.StatsDClient
 
         public StatsDInfluxWrapper(IStatsdConfig config)
         {
+            if (string.IsNullOrEmpty(config.Datacenter))
+            {
+                throw new ArgumentException("statsd datacenter cannot be empty", "datacenter");
+            }
+
+            if (string.IsNullOrEmpty(config.AppName))
+            {
+                throw new ArgumentException("statsd appName cannot be empty", "appName");
+            }
+
             _systemTags = $"host={Environment.MachineName.ToLower()},datacenter={config.Datacenter}";
             _statsd = new Statsd(config.Host, config.Port, config.AppName);
         }
