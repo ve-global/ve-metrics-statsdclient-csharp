@@ -80,12 +80,10 @@ namespace Ve.Metrics.StatsDClient
 
         private static string BuildName(string name, Dictionary<string, string> tags)
         {
-            if (tags == null)
-            {
-                tags = new Dictionary<string, string>();
-            }
-
-            return $"{name},{_systemTags},{string.Join(",", tags.Select(x => x.Key + '=' + x.Value))}";
+            var prefix = $"{name},{_systemTags}";
+            return tags == null
+                ? prefix
+                : $"{prefix},{string.Join(",", tags.Select(x => x.Key + '=' + x.Value))}";
         }
     }
 }
