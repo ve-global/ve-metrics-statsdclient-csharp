@@ -3,12 +3,12 @@ Ve.Metrics.StatsDClient [![Build status](https://ci.appveyor.com/api/projects/st
 
 Provides a set of wrappers and utilities for logging to the VE metrics infrastructure
 
-####StatsDInfluxWrapper
+####VeStatsDClient
 
 This wraps the basic StatsD client in order to provide influxDB specific functionality (i.e. support for tagging).
 
 ```csharp
-var statsd = new StatsDInfluxWrapper(
+var statsd = new VeStatsDClient(
                  new StatsDConfig()
                  {
                    Host = "metrics-statsd.ve-ci.com",
@@ -47,6 +47,30 @@ public static class WebApiConfig
     }
 }
 ```
+
+####StatsDTiming (attribute):
+Provides a timing attribute to wrap methods in with a LogTiming call.
+
+Add the attribute to the method you want to time:
+
+````csharp
+public class MyProvider : IService {
+
+    [StatsDTiming("dependencies.somedependency.get")]
+    public object GetSomething()
+    {
+        return _fooService.GetSomething() // some external service (e.g. redis, sql server etc.)
+    }
+}
+```
+
+Register the interceptor in your container of choice (example here is SimpleInjector)
+
+```csharp
+container.InterceptWith<StatsDTimingInterceptor>(type => type == typeof(IService));
+```
+
+Now every call to `IService.GetSomething()` will log timing data out to StatsD.
 
 ####Configuration:
 
