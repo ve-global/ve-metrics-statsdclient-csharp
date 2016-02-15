@@ -41,6 +41,11 @@ namespace Ve.Metrics.StatsDClient
             _statsd.LogTiming(BuildName(name, tags), milliseconds);
         }
 
+        public TimingToken LogTiming(string name)
+        {
+            return new TimingToken(this, name);
+        }
+
         public void LogGauge(string name, int value, Dictionary<string, string> tags = null)
         {
             _statsd.LogGauge(BuildName(name, tags), value);

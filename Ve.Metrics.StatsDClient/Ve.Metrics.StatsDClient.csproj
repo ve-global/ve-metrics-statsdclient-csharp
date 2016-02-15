@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StatsdConfig.cs" />
+    <Compile Include="TimingToken.cs" />
     <Compile Include="StatsDInfluxWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
