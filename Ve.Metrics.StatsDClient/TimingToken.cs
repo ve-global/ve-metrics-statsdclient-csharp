@@ -5,11 +5,11 @@ namespace Ve.Metrics.StatsDClient
 {
     public sealed class TimingToken : IDisposable
     {
-        private readonly StatsDInfluxWrapper _client;
+        private readonly VeStatsDClient _client;
         private readonly string _name;
         private readonly Stopwatch _stopwatch;
 
-        internal TimingToken(StatsDInfluxWrapper client, string name)
+        internal TimingToken(VeStatsDClient client, string name)
         {
             _stopwatch = Stopwatch.StartNew();
             _client = client;

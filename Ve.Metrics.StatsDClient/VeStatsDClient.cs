@@ -5,12 +5,24 @@ using StatsdClient;
 
 namespace Ve.Metrics.StatsDClient
 {
-    public class StatsDInfluxWrapper
+    public interface IVeStatsDClient
+    {
+        void LogCount(string name, Dictionary<string, string> tags = null);
+        void LogTiming(string name, long milliseconds, Dictionary<string, string> tags = null);
+        void LogTiming(string name, int milliseconds, Dictionary<string, string> tags = null);
+        TimingToken LogTiming(string name);
+        void LogGauge(string name, int value, Dictionary<string, string> tags = null);
+        void LogCalendargram(string name, int value, string period, Dictionary<string, string> tags = null);
+        void LogCalendargram(string name, string value, string period, Dictionary<string, string> tags = null);
+        void LogRaw(string name, int value, string period, long? epoch = null, Dictionary<string, string> tags = null);
+    }
+
+    public class VeStatsDClient : IVeStatsDClient
     {
         private static string _systemTags;
         private readonly Statsd _statsd;
 
-        public StatsDInfluxWrapper(IStatsdConfig config)
+        public VeStatsDClient(IStatsdConfig config)
         {
             if (string.IsNullOrEmpty(config.Datacenter))
             {

@@ -9,12 +9,12 @@ namespace Ve.Metrics.StatsDClient.WebApi
 {
     public class StatsDActionFilter : ActionFilterAttribute
     {
-        private readonly StatsDInfluxWrapper _statsd;
+        private readonly VeStatsDClient _statsd;
         private const string StopwatchKey = "Statsd_Stopwatch";
 
         public StatsDActionFilter(IStatsdConfig config)
         {
-            _statsd = new StatsDInfluxWrapper(config);
+            _statsd = new VeStatsDClient(config);
         }
 
         public override void OnActionExecuting(HttpActionContext actionContext)
