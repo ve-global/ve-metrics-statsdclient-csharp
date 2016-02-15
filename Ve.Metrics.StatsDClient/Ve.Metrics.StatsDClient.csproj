@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StatsdConfig.cs" />
+    <Compile Include="StatsDTiming.cs" />
     <Compile Include="TimingToken.cs" />
     <Compile Include="VeStatsDClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
