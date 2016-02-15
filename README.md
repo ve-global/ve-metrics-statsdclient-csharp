@@ -1,11 +1,13 @@
 Ve.Metrics.StatsDClient [![Build status](https://ci.appveyor.com/api/projects/status/n7qstecrnf0etli1?svg=true)](https://ci.appveyor.com/project/andyroyle/ve-metrics-statsdclient-csharp)
 ---
 
-Provides a set of wrappers and utilities for logging to the VE metrics infrastructure
+Provides a set of wrappers and utilities for logging to the VE metrics infrastructure.
 
-####VeStatsDClient
+Packages:
 
-This wraps the basic StatsD client in order to provide influxDB specific functionality (i.e. support for tagging).
+- [Ve.Metrics.StatsDClient](https://www.nuget.org/packages/Ve.Metrics.StatsDClient)
+- [Ve.Metrics.StatsDClient.WebApi](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.WebApi)
+- [Ve.Metrics.StatsDClient.SimpleInjector](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SimpleInjector)
 
 ```csharp
 var statsd = new VeStatsDClient(
