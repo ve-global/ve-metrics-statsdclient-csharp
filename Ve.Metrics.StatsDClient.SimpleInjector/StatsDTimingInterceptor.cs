@@ -14,9 +14,12 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 
         public void Intercept(IInvocation invocation)
         {
-            var decoratedType = invocation.InvocationTarget.GetType();
+            var methodName = invocation.GetConcreteMethod().Name;
             var timingAttr =
-                decoratedType.GetCustomAttributes(typeof(StatsDTiming), true).FirstOrDefault() as StatsDTiming;
+                invocation.InvocationTarget.GetType()
+                    .GetMethod(methodName)
+                    .GetCustomAttributes(typeof (StatsDTiming), true)
+                    .FirstOrDefault() as StatsDTiming;
 
             if (timingAttr == null)
             {
