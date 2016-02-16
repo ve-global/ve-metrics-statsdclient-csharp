@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using System.Linq;
+using Ve.Metrics.StatsDClient.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SimpleInjector
 {
-    public class StatsDTimingInterceptor : IInterceptor
+    public class StatsDTimingInterceptor : BaseInterceptor<StatsDTiming>, IInterceptor
     {
         private readonly IVeStatsDClient _statsd;
 
@@ -12,26 +12,13 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
             _statsd = statsd;
         }
 
-        public void Intercept(IInvocation invocation)
-        {
-            var methodName = invocation.GetConcreteMethod().Name;
-            var timingAttr =
-                invocation.InvocationTarget.GetType()
-                    .GetMethod(methodName)
-                    .GetCustomAttributes(typeof (StatsDTiming), true)
-                    .FirstOrDefault() as StatsDTiming;
-
-            if (timingAttr == null)
-            {
-                invocation.Proceed();
-                return;
-            }
-
+        protected override void Invoke(IInvocation invocation, StatsDTiming attr)
+        { 
             var watch = Stopwatch.StartNew();
 
             invocation.Proceed();
 
-            _statsd.LogTiming(timingAttr.Name, watch.ElapsedMilliseconds, timingAttr.Tags);
+            _statsd.LogTiming(attr.Name, watch.ElapsedMilliseconds, attr.Tags);
         }
     }
 }

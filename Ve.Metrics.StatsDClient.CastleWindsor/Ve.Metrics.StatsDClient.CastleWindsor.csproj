@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseInterceptor.cs" />
+    <Compile Include="StatsDCountingInterceptor.cs" />
     <Compile Include="StatsDTimingInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

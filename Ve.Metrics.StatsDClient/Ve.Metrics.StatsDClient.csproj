@@ -45,8 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\StatsDBase.cs" />
     <Compile Include="StatsdConfig.cs" />
-    <Compile Include="StatsDTiming.cs" />
+    <Compile Include="Attributes\StatsDCounting.cs" />
+    <Compile Include="Attributes\StatsDTiming.cs" />
     <Compile Include="TimingToken.cs" />
     <Compile Include="VeStatsDClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,6 +8,7 @@ namespace Ve.Metrics.StatsDClient
     public interface IVeStatsDClient
     {
         void LogCount(string name, Dictionary<string, string> tags = null);
+        void LogCount(string name, int count = 1, Dictionary<string, string> tags = null);
         void LogTiming(string name, long milliseconds, Dictionary<string, string> tags = null);
         void LogTiming(string name, int milliseconds, Dictionary<string, string> tags = null);
         TimingToken LogTiming(string name);
@@ -41,6 +42,11 @@ namespace Ve.Metrics.StatsDClient
         public void LogCount(string name, Dictionary<string, string> tags = null)
         {
             _statsd.LogCount(BuildName(name, tags));
+        }
+
+        public void LogCount(string name, int count = 1, Dictionary<string, string> tags = null)
+        {
+            _statsd.LogCount(BuildName(name, tags), count);
         }
 
         public void LogTiming(string name, long milliseconds, Dictionary<string, string> tags = null)
