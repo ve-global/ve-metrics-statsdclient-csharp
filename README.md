@@ -51,10 +51,13 @@ public static class WebApiConfig
 }
 ```
 
-####StatsDTiming (attribute):
-Provides a timing attribute to wrap methods in with a LogTiming call.
+####Method Attributes:
+Provides timing/counting attribute to wrap methods.
 
-Add the attribute to the method you want to time:
+- `StatsDTiming`
+- `StatsDCounting`
+
+Add the attribute to the method you want:
 
 ````csharp
 public class MyProvider : IService {
@@ -64,6 +67,12 @@ public class MyProvider : IService {
     {
         return _fooService.GetSomething() // some external service (e.g. redis, sql server etc.)
     }
+
+    [StatsDCounting("dependencies.somedependency.do"]
+    public void DoSomething()
+    {
+        _fooService.DoSomething();
+    }
 }
 ```
 
@@ -72,13 +81,17 @@ Register the interceptor for your container of choice. (Currently supported are 
 ```csharp
 // SimpleInjector
 container.InterceptWith<StatsDTimingInterceptor>(type => type == typeof(IService));
+container.InterceptWith<StatsDCountingInterceptor(type => type == typeof(IService));
 
 // Castle.Windsor
 container.Register(Component.For<StatsDTimingInterceptor>());
-container.Register(Component.For<IService>().ImplementedBy<MyProvider>().Interceptor<StatsDTimingInterceptor>());
+container.Register(Component.For<IService>()
+                       .ImplementedBy<MyProvider>()
+                       .Interceptors<StatsDTimingInterceptor>()
+		       .Interceptors<StatsDCountingInterceptor>());
 ```
 
-Now every call to `IService.GetSomething()` will log timing data out to StatsD.
+Now every call to `IService.GetSomething()` will log timing data and every call to `IService.DoSomething()` will log counts to statsd.
 
 ####Configuration:
 
