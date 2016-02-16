@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.Sim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.CastleWindsor", "Ve.Metrics.StatsDClient.CastleWindsor\Ve.Metrics.StatsDClient.CastleWindsor.csproj", "{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.Tests", "Ve.Metrics.StatsDClient.Tests\Ve.Metrics.StatsDClient.Tests.csproj", "{68BF1CF8-C9CF-4FFF-AD99-BBF74E4F913D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68BF1CF8-C9CF-4FFF-AD99-BBF74E4F913D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68BF1CF8-C9CF-4FFF-AD99-BBF74E4F913D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68BF1CF8-C9CF-4FFF-AD99-BBF74E4F913D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68BF1CF8-C9CF-4FFF-AD99-BBF74E4F913D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
