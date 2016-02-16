@@ -10,8 +10,8 @@
 
     public class StatsdConfig : IStatsdConfig
     {
-        private const string DEFAULT_HOST = "localhost";
-        private const int DEFAULT_PORT = 8125;
+        private const string DefaultHost = "localhost";
+        private const int DefaultPort = 8125;
 
         private int _port;
         private string _host;
@@ -20,7 +20,7 @@
         {
             get
             {
-                return string.IsNullOrEmpty(_host) ? DEFAULT_HOST : _host ;
+                return string.IsNullOrEmpty(_host) ? DefaultHost : _host ;
             }
             set
             {
@@ -34,7 +34,7 @@
         {
             get
             {
-                return _port == 0 ? DEFAULT_PORT : _port;
+                return _port == 0 ? DefaultPort : _port;
             }
             set
             {

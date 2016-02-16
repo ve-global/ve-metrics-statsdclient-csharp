@@ -30,7 +30,6 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
 
             var watch = Stopwatch.StartNew();
 
-            // Calls the decorated instance.
             invocation.Proceed();
 
             _statsd.LogTiming(timingAttr.Name, watch.ElapsedMilliseconds, timingAttr.Tags);

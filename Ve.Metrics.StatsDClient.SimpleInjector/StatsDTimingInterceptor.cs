@@ -29,7 +29,6 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 
             var watch = Stopwatch.StartNew();
 
-            // Calls the decorated instance.
             invocation.Proceed();
 
             _statsd.LogTiming(timingAttr.Name, watch.ElapsedMilliseconds, timingAttr.Tags);
