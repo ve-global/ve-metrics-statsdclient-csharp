@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.SimpleInjector", "Ve.Metrics.StatsDClient.SimpleInjector\Ve.Metrics.StatsDClient.SimpleInjector.csproj", "{36707064-6AEB-453E-8E12-2A616944C262}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.CastleWindsor", "Ve.Metrics.StatsDClient.CastleWindsor\Ve.Metrics.StatsDClient.CastleWindsor.csproj", "{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{36707064-6AEB-453E-8E12-2A616944C262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36707064-6AEB-453E-8E12-2A616944C262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36707064-6AEB-453E-8E12-2A616944C262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
