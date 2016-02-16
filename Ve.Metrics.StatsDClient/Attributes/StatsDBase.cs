@@ -9,10 +9,9 @@ namespace Ve.Metrics.StatsDClient.Attributes
         public string Name { get; set; }
         public Dictionary<string, string> Tags { get; set; }
 
-        protected StatsDBase(string name, Dictionary<string, string> tags = null)
+        protected StatsDBase(string name)
         {
             Name = name;
-            Tags = tags;
         }
     }
 }

@@ -21,30 +21,38 @@ namespace Ve.Metrics.StatsDClient
     public class VeStatsDClient : IVeStatsDClient
     {
         private static string _systemTags;
-        private readonly Statsd _statsd;
+        private readonly IStatsd _statsd;
 
-        public VeStatsDClient(IStatsdConfig config)
+        public VeStatsDClient(IStatsdConfig config) : this(new Statsd(config.Host, config.Port, config.AppName), config.Datacenter)
         {
             if (string.IsNullOrEmpty(config.Datacenter))
             {
-                throw new ArgumentException("statsd datacenter cannot be empty", "datacenter");
+                throw new ArgumentNullException("datacenter", "statsd datacenter cannot be empty");
             }
 
             if (string.IsNullOrEmpty(config.AppName))
             {
-                throw new ArgumentException("statsd appName cannot be empty", "appName");
+                throw new ArgumentNullException("appName", "statsd appName cannot be empty");
             }
-
-            _systemTags = $"host={Environment.MachineName.ToLower()},datacenter={config.Datacenter}";
-            _statsd = new Statsd(config.Host, config.Port, config.AppName);
         }
 
-        public void LogCount(string name, Dictionary<string, string> tags = null)
+        internal VeStatsDClient(IStatsd statsd, string datacenter)
         {
-            _statsd.LogCount(BuildName(name, tags));
+            _statsd = statsd;
+            _systemTags = $"host={Environment.MachineName.ToLower()},datacenter={datacenter}";
         }
 
-        public void LogCount(string name, int count = 1, Dictionary<string, string> tags = null)
+        public void LogCount(string name)
+        {
+            LogCount(name, 1);
+        }
+
+        public void LogCount(string name, Dictionary<string, string> tags)
+        {
+            LogCount(name, 1, tags);
+        }
+
+        public void LogCount(string name, int count, Dictionary<string, string> tags = null)
         {
             _statsd.LogCount(BuildName(name, tags), count);
         }
