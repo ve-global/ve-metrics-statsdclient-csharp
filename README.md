@@ -8,6 +8,7 @@ Packages:
 - [Ve.Metrics.StatsDClient](https://www.nuget.org/packages/Ve.Metrics.StatsDClient)
 - [Ve.Metrics.StatsDClient.WebApi](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.WebApi)
 - [Ve.Metrics.StatsDClient.SimpleInjector](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SimpleInjector)
+- [Ve.Metrics.StatsDClient.CastleWindsor](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.CastleWindsor)
 
 ```csharp
 var statsd = new VeStatsDClient(
@@ -66,10 +67,15 @@ public class MyProvider : IService {
 }
 ```
 
-Register the interceptor in your container of choice (example here is SimpleInjector)
+Register the interceptor for your container of choice. (Currently supported are SimpleInjector and Castle.Windsor)
 
 ```csharp
+// SimpleInjector
 container.InterceptWith<StatsDTimingInterceptor>(type => type == typeof(IService));
+
+// Castle.Windsor
+container.Register(Component.For<StatsDTimingInterceptor>());
+container.Register(Component.For<IService>().ImplementedBy<MyProvider>().Interceptor<StatsDTimingInterceptor>());
 ```
 
 Now every call to `IService.GetSomething()` will log timing data out to StatsD.
