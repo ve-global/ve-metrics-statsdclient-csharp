@@ -9,11 +9,18 @@ namespace Ve.Metrics.StatsDClient.SystemMetrics
         private readonly IVeStatsDClient _client;
         private static ITimer _timer;
 
-        public SystemMetricsExecutor(List<SystemMetric> metrics, IVeStatsDClient client, int interval = 10000)
-            : this(metrics, client, new TimerWrapper(interval))
+        public int Interval
         {
+            get { return _timer.Interval; }
+            set { _timer.Interval = value; }
         }
 
+        public SystemMetricsExecutor(List<SystemMetric> metrics, IVeStatsDClient client)
+            : this(metrics, client, new TimerWrapper())
+        {
+            Interval = 10000;
+        }
+        
         internal SystemMetricsExecutor(List<SystemMetric> metrics, IVeStatsDClient client, ITimer timer)
         {
             _metrics = metrics;

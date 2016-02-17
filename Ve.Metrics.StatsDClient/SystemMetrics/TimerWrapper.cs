@@ -6,6 +6,7 @@ namespace Ve.Metrics.StatsDClient.SystemMetrics
     {
         void Start();
         event ElapsedEventHandler Elapsed;
+        int Interval { get; set; }
     }
 
     public class TimerWrapper : ITimer
@@ -19,6 +20,12 @@ namespace Ve.Metrics.StatsDClient.SystemMetrics
                 AutoReset = true,
                 Enabled = true
             };
+        }
+
+        public int Interval
+        {
+            get { return (int) _timer.Interval;  }
+            set { _timer.Interval = value; }
         }
 
         public void Start()
