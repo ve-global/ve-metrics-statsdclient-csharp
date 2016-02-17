@@ -93,6 +93,33 @@ container.Register(Component.For<IService>()
 
 Now every call to `IService.GetSomething()` will log timing data and every call to `IService.DoSomething()` will log counts to statsd.
 
+
+####System Metrics:
+
+`SystemMetricsExecutor` provides a wrapper for periodically reporting system metrics to statsd. Currently supported:
+
+- MemoryUsage
+- ProcessorUsage
+
+```csharp
+var statsdClient = new VeStatsDClient(/*...*/);
+var executor = new SystemMetricsExecutor(new List<SystemMetric>(){ new MemoryUsage(), new ProcessorUsage() }, statsdClient);
+```
+
+To add your own custom metrics simply create a class that inherits from `SystemMetric`:
+
+```csharp
+public class MyMetric : SystemMetric
+{
+    public string Name => "MyMetric";
+    public void Execute(IVeStatsDClient client)
+    {
+        var myMetric = 1234;
+	client.LogGauge("process.mymetric", myMetric);
+    }
+}
+```
+
 ####Configuration:
 
 Relies on the following settings:
