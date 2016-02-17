@@ -5,7 +5,7 @@ namespace Ve.Metrics.StatsDClient.SystemMetrics
 {
     public class SystemMetricsExecutor
     {
-        private readonly List<SystemMetric> _metrics;
+        private readonly IList<SystemMetric> _metrics;
         private readonly IVeStatsDClient _client;
         private static ITimer _timer;
 
@@ -15,13 +15,13 @@ namespace Ve.Metrics.StatsDClient.SystemMetrics
             set { _timer.Interval = value; }
         }
 
-        public SystemMetricsExecutor(List<SystemMetric> metrics, IVeStatsDClient client)
+        public SystemMetricsExecutor(IList<SystemMetric> metrics, IVeStatsDClient client)
             : this(metrics, client, new TimerWrapper())
         {
             Interval = 10000;
         }
         
-        internal SystemMetricsExecutor(List<SystemMetric> metrics, IVeStatsDClient client, ITimer timer)
+        internal SystemMetricsExecutor(IList<SystemMetric> metrics, IVeStatsDClient client, ITimer timer)
         {
             _metrics = metrics;
             _client = client;
