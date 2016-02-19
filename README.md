@@ -77,7 +77,7 @@ public class MyProvider : IService {
 }
 ```
 
-Register the interceptor for your container of choice. (Currently supported are SimpleInjector and Castle.Windsor)
+Register the interceptor for your container of choice. (Currently supported are SimpleInjector, Castle.Windsor and Unity)
 
 ```csharp
 // SimpleInjector
