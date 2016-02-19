@@ -40,7 +40,7 @@ public static class WebApiConfig
 {
     public static void Register(HttpConfiguration config)
     {
-        config.Filters.Add(new StatsdActionFilter(
+        config.Filters.Add(new StatsDActionFilter(
             new StatsdConfig()
             {
                 Host = "metrics-statsd.ve-ci.com",
