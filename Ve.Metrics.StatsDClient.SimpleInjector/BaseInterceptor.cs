@@ -5,6 +5,13 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 {
     public abstract class BaseInterceptor<T> where T : StatsDBase
     {
+        protected IVeStatsDClient Client;
+
+        protected BaseInterceptor(IVeStatsDClient client)
+        {
+            Client = client;
+        }
+
         public void Intercept(IInvocation invocation)
         {
             var attr = GetAttribute(invocation);

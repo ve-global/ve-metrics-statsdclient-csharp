@@ -6,6 +6,13 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
 {
     public abstract class BaseInterceptor<T> where T: StatsDBase
     {
+        protected IVeStatsDClient Client { get; set; }
+
+        protected BaseInterceptor(IVeStatsDClient client)
+        {
+            Client = client;
+        }
+        
         public void Intercept(IInvocation invocation)
         {
             var attr = GetAttribute(invocation);

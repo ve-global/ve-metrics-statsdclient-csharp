@@ -5,11 +5,9 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 {
     public class StatsDTimingInterceptor : BaseInterceptor<StatsDTiming>, IInterceptor
     {
-        private readonly IVeStatsDClient _statsd;
-
-        public StatsDTimingInterceptor(IVeStatsDClient statsd)
+        public StatsDTimingInterceptor(IVeStatsDClient client)
+            : base(client)
         {
-            _statsd = statsd;
         }
 
         protected override void Invoke(IInvocation invocation, StatsDTiming attr)
@@ -18,7 +16,7 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 
             invocation.Proceed();
 
-            _statsd.LogTiming(attr.Name, watch.ElapsedMilliseconds, attr.Tags);
+            Client.LogTiming(attr.Name, watch.ElapsedMilliseconds, attr.Tags);
         }
     }
 }
