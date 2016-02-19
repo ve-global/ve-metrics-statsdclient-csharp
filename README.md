@@ -88,7 +88,7 @@ container.Register(Component.For<StatsDTimingInterceptor>());
 container.Register(Component.For<IService>()
                        .ImplementedBy<MyProvider>()
                        .Interceptors<StatsDTimingInterceptor>()
-		       .Interceptors<StatsDCountingInterceptor>());
+                       .Interceptors<StatsDCountingInterceptor>());
 ```
 
 Now every call to `IService.GetSomething()` will log timing data and every call to `IService.DoSomething()` will log counts to statsd.
@@ -115,7 +115,7 @@ public class MyMetric : SystemMetric
     public void Execute(IVeStatsDClient client)
     {
         var myMetric = 1234;
-	client.LogGauge("process.mymetric", myMetric);
+        client.LogGauge("process.mymetric", myMetric);
     }
 }
 ```
