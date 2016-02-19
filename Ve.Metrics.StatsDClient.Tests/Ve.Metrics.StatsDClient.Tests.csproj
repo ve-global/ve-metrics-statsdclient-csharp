@@ -38,6 +38,30 @@
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +102,9 @@
     <Compile Include="SimpleInjector\SimpleInjectorInterceptorsTestBase.cs" />
     <Compile Include="SystemMetrics\MemoryUsageShould.cs" />
     <Compile Include="SystemMetrics\SystemMetricsExecutorShould.cs" />
+    <Compile Include="Unity\UnityInterceptorsTestBase.cs" />
+    <Compile Include="Unity\StatsDCountingInterceptorShould.cs" />
+    <Compile Include="Unity\StatsDTimingInterceptorShould.cs" />
     <Compile Include="VeStatsDClientShould.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +118,10 @@
     <ProjectReference Include="..\Ve.Metrics.StatsDClient.SimpleInjector\Ve.Metrics.StatsDClient.SimpleInjector.csproj">
       <Project>{36707064-6aeb-453e-8e12-2a616944c262}</Project>
       <Name>Ve.Metrics.StatsDClient.SimpleInjector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ve.Metrics.StatsDClient.Unity\Ve.Metrics.StatsDClient.Unity.csproj">
+      <Project>{00ca99db-703f-4c1a-a5d1-869a815766ac}</Project>
+      <Name>Ve.Metrics.StatsDClient.Unity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ve.Metrics.StatsDClient\Ve.Metrics.StatsDClient.csproj">
       <Project>{3B4CCBBF-0F57-4D8F-9127-CF80203D0527}</Project>
