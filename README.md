@@ -9,6 +9,7 @@ Packages:
 - [Ve.Metrics.StatsDClient.WebApi](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.WebApi)
 - [Ve.Metrics.StatsDClient.SimpleInjector](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SimpleInjector)
 - [Ve.Metrics.StatsDClient.CastleWindsor](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.CastleWindsor)
+- [Ve.Metrics.StatsDClient.Unity](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Unity)
 
 ```csharp
 var statsd = new VeStatsDClient(
@@ -80,6 +81,7 @@ Register the interceptor for your container of choice. (Currently supported are 
 
 ```csharp
 // SimpleInjector
+container.RegisterSingleton<IService, MyService>();
 container.InterceptWith<StatsDTimingInterceptor>(type => type == typeof(IService));
 container.InterceptWith<StatsDCountingInterceptor(type => type == typeof(IService));
 
@@ -89,6 +91,13 @@ container.Register(Component.For<IService>()
                        .ImplementedBy<MyProvider>()
                        .Interceptors<StatsDTimingInterceptor>()
                        .Interceptors<StatsDCountingInterceptor>());
+
+// Unity
+container.AddNewExtension<Interception>();
+container.RegisterType<IService, MyService>(
+    new Interceptor<InterfaceInterceptor>(),
+    new InterceptionBehavior<StatsDTimingInterceptor(),
+    new InterceptionBehavior<StatsDCountingInterceptor())
 ```
 
 Now every call to `IService.GetSomething()` will log timing data and every call to `IService.DoSomething()` will log counts to statsd.
