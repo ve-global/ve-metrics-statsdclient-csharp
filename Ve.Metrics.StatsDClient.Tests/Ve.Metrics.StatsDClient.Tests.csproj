@@ -100,6 +100,7 @@
     <Compile Include="SimpleInjector\StatsDCountingInterceptorShould.cs" />
     <Compile Include="SimpleInjector\StatsDTimingInterceptorShould.cs" />
     <Compile Include="SimpleInjector\SimpleInjectorInterceptorsTestBase.cs" />
+    <Compile Include="SystemMetrics\ASPNETCountersShould.cs" />
     <Compile Include="SystemMetrics\MemoryUsageShould.cs" />
     <Compile Include="SystemMetrics\SystemMetricsExecutorShould.cs" />
     <Compile Include="Unity\UnityInterceptorsTestBase.cs" />
