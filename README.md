@@ -7,6 +7,7 @@ Packages:
 
 - [Ve.Metrics.StatsDClient](https://www.nuget.org/packages/Ve.Metrics.StatsDClient)
 - [Ve.Metrics.StatsDClient.WebApi](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.WebApi)
+- [Ve.Metrics.StatsDClient.Mvc](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Mvc)
 - [Ve.Metrics.StatsDClient.SimpleInjector](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SimpleInjector)
 - [Ve.Metrics.StatsDClient.CastleWindsor](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.CastleWindsor)
 - [Ve.Metrics.StatsDClient.Unity](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Unity)
@@ -22,12 +23,16 @@ var statsd = new VeStatsDClient(
                  }));
 
 statsd.LogCount("foo", new Dictionary<string, string>(){ { "bar", "baz" } });
+statsd.LogGauge("bar", 1234);
+
+var stopwatch = Stopwatch.StartNew();
+statsd.LogTiming("baz", stopwatch.ElapsedMilliseconds);
 
 ```
 
-####StatsDActionFilter
+####StatsDActionFilter (Mvc or WebApi)
 
-A HttpActionFilter designed to be used with Asp.Net WebApi. It logs the following info:
+An ActionFilter designed to be used with Asp.Net WebApi or Mvc. It logs the following info:
 
 - response time
 - response code
