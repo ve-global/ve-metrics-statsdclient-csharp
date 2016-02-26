@@ -49,8 +49,8 @@ namespace Ve.Metrics.StatsDClient.WebApi
             object controller;
             object action;
             actionContext.ControllerContext.RouteData.Values.TryGetValue("controller", out controller);
-            actionContext.ControllerContext.RouteData.Values.TryGetValue("action", out action);
-
+            action = actionContext.ActionDescriptor.ActionName;
+            
             var ctr = string.IsNullOrEmpty(controller?.ToString())
                 ? "none"
                 : controller.ToString().ToLower();
