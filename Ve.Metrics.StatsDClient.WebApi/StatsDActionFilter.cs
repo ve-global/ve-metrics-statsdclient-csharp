@@ -49,18 +49,11 @@ namespace Ve.Metrics.StatsDClient.WebApi
             var action = actionContext?.ActionDescriptor?.ActionName?.ToLower() ?? "none";
             var controller = actionContext?.ControllerContext?.ControllerDescriptor?.ControllerName?.ToLower() ?? "none";
 
-            var ctr = string.IsNullOrEmpty(controller)
-                ? "none"
-                : controller.ToLower();
-            var act = string.IsNullOrEmpty(action)
-                ? "none"
-                : action.ToLower();
-
             return new Dictionary<string, string>()
             {
                 { "code", GetStatusCode(actionContext).ToString() },
-                { "controller", ctr },
-                { "action", act }
+                { "controller", controller },
+                { "action", action }
             };
         }
 
