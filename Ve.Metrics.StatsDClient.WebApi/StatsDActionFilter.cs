@@ -46,23 +46,14 @@ namespace Ve.Metrics.StatsDClient.WebApi
 
         private Dictionary<string, string> GetRouteData(HttpActionContext actionContext)
         {
-            object controller;
-            object action;
-            actionContext.ControllerContext.RouteData.Values.TryGetValue("controller", out controller);
-            actionContext.ControllerContext.RouteData.Values.TryGetValue("action", out action);
-
-            var ctr = string.IsNullOrEmpty(controller?.ToString())
-                ? "none"
-                : controller.ToString().ToLower();
-            var act = string.IsNullOrEmpty(action?.ToString())
-                ? "none"
-                : action.ToString().ToLower();
+            var action = actionContext?.ActionDescriptor?.ActionName?.ToLower() ?? "none";
+            var controller = actionContext?.ControllerContext?.ControllerDescriptor?.ControllerName?.ToLower() ?? "none";
 
             return new Dictionary<string, string>()
             {
                 { "code", GetStatusCode(actionContext).ToString() },
-                { "controller", ctr },
-                { "action", act }
+                { "controller", controller },
+                { "action", action }
             };
         }
 
