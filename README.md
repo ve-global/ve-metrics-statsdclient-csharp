@@ -20,7 +20,7 @@ var statsd = new VeStatsDClient(
                    Port = 8125,
                    AppName = "myapp",
                    Datacenter = "ci"
-                 }));
+                 });
 
 statsd.LogCount("foo", new Dictionary<string, string>(){ { "bar", "baz" } });
 statsd.LogGauge("bar", 1234);
@@ -92,6 +92,7 @@ container.InterceptWith<StatsDCountingInterceptor(type => type == typeof(IServic
 
 // Castle.Windsor
 container.Register(Component.For<StatsDTimingInterceptor>());
+container.Register(Component.For<StatsDCountingInterceptor>());
 container.Register(Component.For<IService>()
                        .ImplementedBy<MyProvider>()
                        .Interceptors<StatsDTimingInterceptor>()
