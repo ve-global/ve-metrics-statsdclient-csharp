@@ -111,6 +111,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ve.Metrics.StatsDClient.Abstract\Ve.Metrics.StatsDClient.Abstract.csproj">
+      <Project>{05e3c175-bdfa-4da6-bd01-4230fc668d74}</Project>
+      <Name>Ve.Metrics.StatsDClient.Abstract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ve.Metrics.StatsDClient.CastleWindsor\Ve.Metrics.StatsDClient.CastleWindsor.csproj">
       <Project>{1F01A1FF-CC4F-48CD-9ECD-FF0E18B229A5}</Project>
       <Name>Ve.Metrics.StatsDClient.CastleWindsor</Name>

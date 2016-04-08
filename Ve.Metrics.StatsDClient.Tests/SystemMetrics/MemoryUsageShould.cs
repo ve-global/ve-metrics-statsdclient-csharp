@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Shouldly;
+using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.SystemMetrics;
 
 namespace Ve.Metrics.StatsDClient.Tests.SystemMetrics

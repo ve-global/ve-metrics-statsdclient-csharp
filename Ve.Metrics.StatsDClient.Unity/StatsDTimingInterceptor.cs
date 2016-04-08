@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.Practices.Unity.InterceptionExtension;
+using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Attributes;
 
 namespace Ve.Metrics.StatsDClient.Unity

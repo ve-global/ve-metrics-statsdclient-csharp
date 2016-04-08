@@ -45,13 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\StatsDBase.cs" />
     <Compile Include="StatsdConfig.cs" />
     <Compile Include="Attributes\StatsDCounting.cs" />
     <Compile Include="Attributes\StatsDTiming.cs" />
     <Compile Include="SystemMetrics\MemoryUsage.cs" />
     <Compile Include="SystemMetrics\ProcessorUsage.cs" />
-    <Compile Include="SystemMetrics\SystemMetric.cs" />
     <Compile Include="SystemMetrics\SystemMetricsExecutor.cs" />
     <Compile Include="SystemMetrics\TimerWrapper.cs" />
     <Compile Include="TimingToken.cs" />
@@ -60,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ve.Metrics.StatsDClient.Abstract\Ve.Metrics.StatsDClient.Abstract.csproj">
+      <Project>{05e3c175-bdfa-4da6-bd01-4230fc668d74}</Project>
+      <Name>Ve.Metrics.StatsDClient.Abstract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

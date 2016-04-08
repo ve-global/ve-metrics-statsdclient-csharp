@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Web;
 using System.Web.Mvc;
+using Ve.Metrics.StatsDClient.Abstract;
 
 namespace Ve.Metrics.StatsDClient.Mvc
 {

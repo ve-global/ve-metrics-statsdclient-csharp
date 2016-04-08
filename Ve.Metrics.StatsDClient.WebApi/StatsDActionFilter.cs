@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using Ve.Metrics.StatsDClient.Abstract;
 
 namespace Ve.Metrics.StatsDClient.WebApi
 {

@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Ve.Metrics.StatsDClient.Abstract;
+using Ve.Metrics.StatsDClient.Abstract.Attributes;
 using Ve.Metrics.StatsDClient.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SimpleInjector
