@@ -1,14 +1,8 @@
 ﻿using System.Timers;
+using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SystemMetrics
 {
-    public interface ITimer
-    {
-        void Start();
-        event ElapsedEventHandler Elapsed;
-        int Interval { get; set; }
-    }
-
     public class TimerWrapper : ITimer
     {
         private readonly Timer _timer;

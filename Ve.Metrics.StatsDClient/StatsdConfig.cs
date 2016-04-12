@@ -1,13 +1,7 @@
-﻿namespace Ve.Metrics.StatsDClient
-{
-    public interface IStatsdConfig
-    {
-        string Host { get; }
-        string Datacenter { get; }
-        int Port { get; }
-        string AppName { get; }
-    }
+﻿using Ve.Metrics.StatsDClient.Abstract;
 
+namespace Ve.Metrics.StatsDClient
+{
     public class StatsdConfig : IStatsdConfig
     {
         private const string DefaultHost = "localhost";

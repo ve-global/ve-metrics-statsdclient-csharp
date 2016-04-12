@@ -1,15 +1,15 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Ve.Metrics.StatsDClient.Abstract;
 
 namespace Ve.Metrics.StatsDClient
 {
-    public sealed class TimingToken : IDisposable
+    public sealed class TimingToken : ITimingToken
     {
-        private readonly VeStatsDClient _client;
+        private readonly IVeStatsDClient _client;
         private readonly string _name;
         private readonly Stopwatch _stopwatch;
 
-        internal TimingToken(VeStatsDClient client, string name)
+        public TimingToken(IVeStatsDClient client, string name)
         {
             _stopwatch = Stopwatch.StartNew();
             _client = client;
