@@ -48,6 +48,7 @@
     <Compile Include="StatsdConfig.cs" />
     <Compile Include="Attributes\StatsDCounting.cs" />
     <Compile Include="Attributes\StatsDTiming.cs" />
+    <Compile Include="SystemMetrics\ASPNETCounters.cs" />
     <Compile Include="SystemMetrics\MemoryUsage.cs" />
     <Compile Include="SystemMetrics\ProcessorUsage.cs" />
     <Compile Include="SystemMetrics\SystemMetricsExecutor.cs" />

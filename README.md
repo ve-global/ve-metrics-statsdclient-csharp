@@ -115,10 +115,11 @@ Now every call to `IService.GetSomething()` will log timing data and every call 
 
 - MemoryUsage
 - ProcessorUsage
+- AspNetCounters
 
 ```csharp
 var statsdClient = new VeStatsDClient(/*...*/);
-var executor = new SystemMetricsExecutor(new List<SystemMetric>(){ new MemoryUsage(), new ProcessorUsage() }, statsdClient);
+var executor = new SystemMetricsExecutor(new List<SystemMetric>(){ new MemoryUsage(), new ProcessorUsage(), new AspNetCounters() }, statsdClient);
 ```
 
 To add your own custom metrics simply create a class that inherits from `SystemMetric`:
