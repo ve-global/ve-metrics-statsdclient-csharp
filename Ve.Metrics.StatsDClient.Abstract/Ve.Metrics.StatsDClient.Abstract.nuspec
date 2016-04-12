@@ -13,7 +13,4 @@
     <releaseNotes>See CHANGELOG.md in the project's GitHub repository.</releaseNotes>
     <tags>stats statsd metrics influxdb</tags>
   </metadata>
-  <files>
-    <file src="..\Ve.Metrics.StatsDClient.Abstract\bin\Release\Ve.Metrics.StatsDClient.Abstract.dll" target="lib\net45" /> 
-  </files>
 </package>
