@@ -5,7 +5,6 @@ using Moq;
 using NUnit.Framework;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
-using Ve.Metrics.StatsDClient.Attributes;
 using Ve.Metrics.StatsDClient.CastleWindsor;
 
 namespace Ve.Metrics.StatsDClient.Tests.CastleWindsor

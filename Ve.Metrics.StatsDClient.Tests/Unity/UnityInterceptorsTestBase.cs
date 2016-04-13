@@ -4,7 +4,6 @@ using Moq;
 using NUnit.Framework;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
-using Ve.Metrics.StatsDClient.Attributes;
 using Ve.Metrics.StatsDClient.Unity;
 
 namespace Ve.Metrics.StatsDClient.Tests.Unity

@@ -3,7 +3,6 @@ using NUnit.Framework;
 using SimpleInjector;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
-using Ve.Metrics.StatsDClient.Attributes;
 using Ve.Metrics.StatsDClient.SimpleInjector;
 
 namespace Ve.Metrics.StatsDClient.Tests.SimpleInjector

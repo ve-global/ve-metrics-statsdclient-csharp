@@ -1,6 +1,4 @@
-﻿using Ve.Metrics.StatsDClient.Abstract.Attributes;
-
-namespace Ve.Metrics.StatsDClient.Attributes
+﻿namespace Ve.Metrics.StatsDClient.Abstract.Attributes
 {
     public class StatsDTiming : StatsDBase
     {

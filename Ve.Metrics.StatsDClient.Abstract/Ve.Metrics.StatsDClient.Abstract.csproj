@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\StatsDBase.cs" />
+    <Compile Include="Attributes\StatsDCounting.cs" />
+    <Compile Include="Attributes\StatsDTiming.cs" />
     <Compile Include="IStatsdConfig.cs" />
     <Compile Include="Attributes\ITimer.cs" />
     <Compile Include="ITimingToken.cs" />
