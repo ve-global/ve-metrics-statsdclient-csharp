@@ -6,11 +6,15 @@ Provides a set of wrappers and utilities for logging to the VE metrics infrastru
 Packages:
 
 - [Ve.Metrics.StatsDClient](https://www.nuget.org/packages/Ve.Metrics.StatsDClient)
+- [Ve.Metrics.StatsDClient.Abstract](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Abstract)
 - [Ve.Metrics.StatsDClient.WebApi](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.WebApi)
 - [Ve.Metrics.StatsDClient.Mvc](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Mvc)
 - [Ve.Metrics.StatsDClient.SimpleInjector](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SimpleInjector)
 - [Ve.Metrics.StatsDClient.CastleWindsor](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.CastleWindsor)
 - [Ve.Metrics.StatsDClient.Unity](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.Unity)
+- [Ve.Metrics.StatsDClient.SystemMetrics](https://www.nuget.org/packages/Ve.Metrics.StatsDClient.SystemMetrics)
+
+The Abstract package contains only the interfaces and the attributes to remove the full dependency on the statsd client from projects that don't explicitly need it.
 
 ```csharp
 var statsd = new VeStatsDClient(
