@@ -1,4 +1,6 @@
-﻿namespace Ve.Metrics.StatsDClient.Abstract.SystemMetrics
+﻿using Ve.Metrics.StatsDClient.Abstract;
+
+namespace Ve.Metrics.StatsDClient.SystemMetrics
 {
     public abstract class SystemMetric
     {

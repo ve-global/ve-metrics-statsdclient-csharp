@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{05E3C175-BDFA-4DA6-BD01-4230FC668D74}</ProjectGuid>
+    <ProjectGuid>{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ve.Metrics.StatsDClient.Abstract</RootNamespace>
-    <AssemblyName>Ve.Metrics.StatsDClient.Abstract</AssemblyName>
+    <RootNamespace>Ve.Metrics.StatsDClient.SystemMetrics</RootNamespace>
+    <AssemblyName>Ve.Metrics.StatsDClient.SystemMetrics</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,14 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\StatsDBase.cs" />
-    <Compile Include="Attributes\StatsDCounting.cs" />
-    <Compile Include="Attributes\StatsDTiming.cs" />
-    <Compile Include="IStatsdConfig.cs" />
-    <Compile Include="Attributes\ITimer.cs" />
-    <Compile Include="ITimingToken.cs" />
-    <Compile Include="IVeStatsDClient.cs" />
+    <Compile Include="MemoryUsage.cs" />
+    <Compile Include="ProcessorUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemMetric.cs" />
+    <Compile Include="SystemMetricsExecutor.cs" />
+    <Compile Include="Threads.cs" />
+    <Compile Include="TimerWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ve.Metrics.StatsDClient.Abstract\Ve.Metrics.StatsDClient.Abstract.csproj">
+      <Project>{05E3C175-BDFA-4DA6-BD01-4230FC668D74}</Project>
+      <Name>Ve.Metrics.StatsDClient.Abstract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

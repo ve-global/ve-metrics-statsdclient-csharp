@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ve.Metrics.StatsDClient")]
+[assembly: AssemblyTitle("Ve.Metrics.StatsDClient.SystemMetrics")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ve.Metrics.StatsDClient")]
+[assembly: AssemblyProduct("Ve.Metrics.StatsDClient.SystemMetrics")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3b4ccbbf-0f57-4d8f-9127-cf80203d0527")]
+[assembly: Guid("4bf60b3d-c016-4082-9b9a-1f7aab8ae9ca")]
 
 // Version information for an assembly consists of the following four values:
 //

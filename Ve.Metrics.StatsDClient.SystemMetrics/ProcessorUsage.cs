@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using Ve.Metrics.StatsDClient.Abstract;
-using Ve.Metrics.StatsDClient.Abstract.SystemMetrics;
+﻿using Ve.Metrics.StatsDClient.Abstract;
 
 namespace Ve.Metrics.StatsDClient.SystemMetrics
 {

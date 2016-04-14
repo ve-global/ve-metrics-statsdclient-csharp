@@ -5,7 +5,6 @@ using Moq;
 using NUnit.Framework;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
-using Ve.Metrics.StatsDClient.Abstract.SystemMetrics;
 using Ve.Metrics.StatsDClient.SystemMetrics;
 
 namespace Ve.Metrics.StatsDClient.Tests.SystemMetrics

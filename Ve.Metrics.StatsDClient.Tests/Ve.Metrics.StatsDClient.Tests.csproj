@@ -101,7 +101,9 @@
     <Compile Include="SimpleInjector\StatsDTimingInterceptorShould.cs" />
     <Compile Include="SimpleInjector\SimpleInjectorInterceptorsTestBase.cs" />
     <Compile Include="SystemMetrics\MemoryUsageShould.cs" />
+    <Compile Include="SystemMetrics\ProcessorUsageShould.cs" />
     <Compile Include="SystemMetrics\SystemMetricsExecutorShould.cs" />
+    <Compile Include="SystemMetrics\ThreadsShould.cs" />
     <Compile Include="Unity\UnityInterceptorsTestBase.cs" />
     <Compile Include="Unity\StatsDCountingInterceptorShould.cs" />
     <Compile Include="Unity\StatsDTimingInterceptorShould.cs" />
@@ -122,6 +124,10 @@
     <ProjectReference Include="..\Ve.Metrics.StatsDClient.SimpleInjector\Ve.Metrics.StatsDClient.SimpleInjector.csproj">
       <Project>{36707064-6aeb-453e-8e12-2a616944c262}</Project>
       <Name>Ve.Metrics.StatsDClient.SimpleInjector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ve.Metrics.StatsDClient.SystemMetrics\Ve.Metrics.StatsDClient.SystemMetrics.csproj">
+      <Project>{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}</Project>
+      <Name>Ve.Metrics.StatsDClient.SystemMetrics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ve.Metrics.StatsDClient.Unity\Ve.Metrics.StatsDClient.Unity.csproj">
       <Project>{00ca99db-703f-4c1a-a5d1-869a815766ac}</Project>

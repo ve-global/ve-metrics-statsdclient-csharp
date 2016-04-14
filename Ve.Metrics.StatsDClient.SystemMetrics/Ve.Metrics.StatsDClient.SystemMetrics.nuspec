@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>VE Statsd SystemMetrics</title>
+    <authors>Andy Royle</authors>
+    <owners>Andy Royle</owners>
+    <projectUrl>https://github.com/ve-interactive/ve-metrics-statsd-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides System Metrics for the VE Metrics StatsD client for C#</description>
+    <copyright>Copyright 2016</copyright>
+    <releaseNotes>See CHANGELOG.md in the project's GitHub repository.</releaseNotes>
+    <tags>stats statsd metrics influxdb</tags>
+  </metadata>
+  <dependencies>
+    <dependency id="Ve.Metrics.StatsDClient.Abstract" />
+  </dependencies>
+</package>
