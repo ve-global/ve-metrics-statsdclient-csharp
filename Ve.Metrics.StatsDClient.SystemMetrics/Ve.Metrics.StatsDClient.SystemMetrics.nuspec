@@ -12,8 +12,8 @@
     <copyright>Copyright 2016</copyright>
     <releaseNotes>See CHANGELOG.md in the project's GitHub repository.</releaseNotes>
     <tags>stats statsd metrics influxdb</tags>
+    <dependencies>
+      <dependency id="Ve.Metrics.StatsDClient.Abstract" />
+    </dependencies>
   </metadata>
-  <dependencies>
-    <dependency id="Ve.Metrics.StatsDClient.Abstract" />
-  </dependencies>
 </package>
