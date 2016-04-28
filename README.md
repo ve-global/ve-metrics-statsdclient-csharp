@@ -32,6 +32,10 @@ statsd.LogGauge("bar", 1234);
 var stopwatch = Stopwatch.StartNew();
 statsd.LogTiming("baz", stopwatch.ElapsedMilliseconds);
 
+using(statsd.LogTiming("blarg")){
+  _mycoolthing.DoSomething();
+}
+
 ```
 
 ####StatsDActionFilter (Mvc or WebApi)
