@@ -10,6 +10,7 @@ namespace Ve.Metrics.StatsDClient.Abstract
         void LogTiming(string name, long milliseconds, Dictionary<string, string> tags = null);
         void LogTiming(string name, int milliseconds, Dictionary<string, string> tags = null);
         ITimingToken LogTiming(string name);
+        ITimingToken LogTiming(string name, Dictionary<string, string> tags);
         void LogGauge(string name, int value, Dictionary<string, string> tags = null);
         void LogCalendargram(string name, int value, string period, Dictionary<string, string> tags = null);
         void LogCalendargram(string name, string value, string period, Dictionary<string, string> tags = null);

@@ -18,6 +18,7 @@ namespace Ve.Metrics.StatsDClient.Tests
         {
             _statsd = new Mock<IStatsd>();
             _statsd.Setup(x => x.LogCount(It.IsAny<string>(), It.IsAny<int>()));
+            _statsd.Setup(x => x.LogTiming(It.IsAny<string>(), It.IsAny<long>()));
             _client = new VeStatsDClient(_statsd.Object, "foo");
         }
 
@@ -51,14 +52,22 @@ namespace Ve.Metrics.StatsDClient.Tests
         public void It_should_include_system_tags_before_sending_metrics()
         {
             _client.LogCount("foo.bar");
-            _statsd.Verify(x => x.LogCount(It.IsRegex("foo\\.bar\\,host\\=(.*)\\,datacenter\\=foo"), It.IsAny<int>()));
+            _statsd.Verify(x => x.LogCount(It.IsRegex("foo\\.bar\\,host\\=([A-Za-z0-9-]+)\\,datacenter\\=foo"), It.IsAny<int>()));
         }
 
         [Test]
         public void It_should_include_runtime_tags_before_sending_metrics()
         {
             _client.LogCount("foo.bar", new Dictionary<string,string>() { {"foo", "bar"} });
-            _statsd.Verify(x => x.LogCount(It.IsRegex("foo\\.bar\\,host\\=(.*)\\,datacenter\\=foo,foo\\=bar"), It.IsAny<int>()));
+            _statsd.Verify(x => x.LogCount(It.IsRegex("foo\\.bar\\,host\\=([A-Za-z0-9-]+)\\,datacenter\\=foo,foo\\=bar"), It.IsAny<int>()));
+        }
+
+        [Test]
+        public void It_should_pass_the_tags_supplied_when_using_the_timing_token()
+        {
+            var token = _client.LogTiming("foo.bar", new Dictionary<string, string> {{"foo", "bar"}});
+            token.Dispose();
+            _statsd.Verify(x => x.LogTiming(It.IsRegex("foo\\.bar\\,host\\=([A-Za-z0-9-]+)\\,datacenter\\=foo,foo\\=bar"), It.IsAny<long>()));
         }
     }
 }
