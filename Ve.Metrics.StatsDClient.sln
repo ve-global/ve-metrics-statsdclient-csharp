@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.WebApi", "Ve.Metrics.StatsDClient.WebApi\Ve.Metrics.StatsDClient.WebApi.csproj", "{2C7F3091-E9B6-41FC-823B-347426BA0817}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.Abstract", "Ve.Metrics.StatsDClient.Abstract\Ve.Metrics.StatsDClient.Abstract.csproj", "{05E3C175-BDFA-4DA6-BD01-4230FC668D74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.SystemMetrics", "Ve.Metrics.StatsDClient.SystemMetrics\Ve.Metrics.StatsDClient.SystemMetrics.csproj", "{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ve.Metrics.StatsDClient.WebForms", "Ve.Metrics.StatsDClient.WebForms\Ve.Metrics.StatsDClient.WebForms.csproj", "{5C709F5B-E7AD-4DBA-85F0-C67CEA284A01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BF60B3D-C016-4082-9B9A-1F7AAB8AE9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C709F5B-E7AD-4DBA-85F0-C67CEA284A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C709F5B-E7AD-4DBA-85F0-C67CEA284A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C709F5B-E7AD-4DBA-85F0-C67CEA284A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C709F5B-E7AD-4DBA-85F0-C67CEA284A01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
