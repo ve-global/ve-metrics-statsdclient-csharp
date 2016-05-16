@@ -17,7 +17,23 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 
             invocation.Proceed();
 
-            Client.LogTiming(attr.Name, watch.ElapsedMilliseconds, attr.Tags);
+            var name = attr.Name;
+            var methodBase = invocation.GetConcreteMethod();
+            var method = methodBase.Name;
+            var target = invocation.InvocationTarget.GetType().Name;
+
+            name = name.Replace("{type}", target.ToLowerInvariant());
+            name = name.Replace("{method}", method.ToLowerInvariant());
+
+            if (methodBase.IsGenericMethod)
+            {
+                var arguments = methodBase.GetGenericArguments();
+                var generic = arguments[0].Name;
+
+                name = name.Replace("{generic}", generic.ToLowerInvariant());
+            }
+
+            Client.LogTiming(name, watch.ElapsedMilliseconds, attr.Tags);
         }
     }
 }

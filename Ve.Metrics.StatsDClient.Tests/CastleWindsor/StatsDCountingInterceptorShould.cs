@@ -23,6 +23,20 @@ namespace Ve.Metrics.StatsDClient.Tests.CastleWindsor
         }
 
         [Test]
+        public void It_should_count_the_targeted_formatted_method_and_log_to_statsd()
+        {
+            Service.TrackedFormattedMethod();
+            StatsdMock.Verify(x => x.LogCount("dependencies.fooservice.trackedformattedmethod", It.IsAny<int>(), It.IsAny<Dictionary<string, string>>()), Times.Once);
+        }
+
+        [Test]
+        public void It_should_count_the_targeted_generic_method_and_log_to_statsd()
+        {
+            Service.TrackedGenericMethod<object>();
+            StatsdMock.Verify(x => x.LogCount("dependencies.object", It.IsAny<int>(), It.IsAny<Dictionary<string, string>>()), Times.Once);
+        }
+
+        [Test]
         public void It_should_not_fire_for_untracked_methods()
         {
             Service.UntrackedMethod();
