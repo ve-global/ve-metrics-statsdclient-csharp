@@ -1,4 +1,6 @@
-﻿using Castle.DynamicProxy;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Castle.DynamicProxy;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
@@ -25,10 +27,17 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
 
             if (methodBase.IsGenericMethod)
             {
+                var generic = new List<string>();
                 var arguments = methodBase.GetGenericArguments();
-                var generic = arguments[0].Name;
 
-                name = name.Replace("{generic}", generic.ToLowerInvariant());
+                while (arguments.Any())
+                {
+                    var argument = arguments.First();
+                    generic.Add(argument.Name.ToLowerInvariant());
+                    arguments = argument.GetGenericArguments();
+                }
+
+                name = name.Replace("{generic}", string.Join("-", generic));
             }
 
             Client.LogCount(name, attr.Count, attr.Tags);
