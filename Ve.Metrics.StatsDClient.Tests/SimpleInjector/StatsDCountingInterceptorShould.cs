@@ -37,6 +37,13 @@ namespace Ve.Metrics.StatsDClient.Tests.SimpleInjector
         }
 
         [Test]
+        public void It_should_count_the_targeted_nested_generic_method_and_log_to_statsd()
+        {
+            Service.TrackedGenericMethod<IEnumerable<object>>();
+            StatsdMock.Verify(x => x.LogCount("dependencies.ienumerable`1-object", It.IsAny<int>(), It.IsAny<Dictionary<string, string>>()), Times.Once);
+        }
+
+        [Test]
         public void It_should_not_fire_for_untracked_methods()
         {
             Service.UntrackedMethod();

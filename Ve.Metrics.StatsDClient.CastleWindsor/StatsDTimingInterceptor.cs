@@ -28,10 +28,7 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
 
             if (methodBase.IsGenericMethod)
             {
-                var arguments = methodBase.GetGenericArguments();
-                var generic = arguments[0].Name;
-
-                name = name.Replace("{generic}", generic.ToLowerInvariant());
+                name = GetGenericName(name, methodBase);
             }
 
             Client.LogTiming(name, watch.ElapsedMilliseconds, attr.Tags);

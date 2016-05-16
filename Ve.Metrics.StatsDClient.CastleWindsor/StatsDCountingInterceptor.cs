@@ -10,7 +10,7 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
             : base(client)
         {
         }
-        
+
         protected override void Invoke(IInvocation invocation, StatsDCounting attr)
         {
             invocation.Proceed();
@@ -25,10 +25,7 @@ namespace Ve.Metrics.StatsDClient.CastleWindsor
 
             if (methodBase.IsGenericMethod)
             {
-                var arguments = methodBase.GetGenericArguments();
-                var generic = arguments[0].Name;
-
-                name = name.Replace("{generic}", generic.ToLowerInvariant());
+                name = GetGenericName(name, methodBase);
             }
 
             Client.LogCount(name, attr.Count, attr.Tags);
