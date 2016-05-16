@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Ve.Metrics.StatsDClient.Abstract;
+﻿using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SimpleInjector
@@ -25,17 +23,7 @@ namespace Ve.Metrics.StatsDClient.SimpleInjector
 
             if (methodBase.IsGenericMethod)
             {
-                var generic = new List<string>();
-                var arguments = methodBase.GetGenericArguments();
-
-                while (arguments.Any())
-                {
-                    var argument = arguments.First();
-                    generic.Add(argument.Name.ToLowerInvariant());
-                    arguments = argument.GetGenericArguments();
-                }
-
-                name = name.Replace("{generic}", string.Join("-", generic));
+                name = GetGenericName(name, methodBase);
             }
 
             Client.LogCount(name, attr.Count, attr.Tags);
