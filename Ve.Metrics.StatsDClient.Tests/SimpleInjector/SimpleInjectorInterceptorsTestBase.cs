@@ -4,10 +4,11 @@ using SimpleInjector;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
 using Ve.Metrics.StatsDClient.SimpleInjector;
+using Ve.Metrics.StatsDClient.Tests.TestClasses;
 
 namespace Ve.Metrics.StatsDClient.Tests.SimpleInjector
 {
-    public class SimpleInjectorInterceptorsTestBase<T1 ,T2> where T1: BaseInterceptor<T2>, IInterceptor where T2: StatsDBase
+    public class SimpleInjectorInterceptorsTestBase<T1 ,T2> where T1: SimpleInjectorInterceptor<T2>, IInterceptor where T2: StatsDBase
     {
         protected Container Container;
         protected Mock<IVeStatsDClient> StatsdMock;

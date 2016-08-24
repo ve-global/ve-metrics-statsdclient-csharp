@@ -5,7 +5,7 @@ using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.CastleWindsor
 {
-    public class StatsDTimingInterceptor : BaseInterceptor<StatsDTiming>, IInterceptor
+    public class StatsDTimingInterceptor : CastleInterceptor<StatsDTiming>, IInterceptor
     {
         public StatsDTimingInterceptor(IVeStatsDClient client)
             : base(client)

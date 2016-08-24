@@ -5,7 +5,7 @@ using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.Unity
 {
-    public class StatsDCountingInterceptor : BaseInterceptor<StatsDCounting>, IInterceptionBehavior
+    public class StatsDCountingInterceptor : UnityInterceptor<StatsDCounting>, IInterceptionBehavior
     {
         public StatsDCountingInterceptor(IVeStatsDClient client)
             : base(client)

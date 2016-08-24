@@ -6,10 +6,11 @@ using NUnit.Framework;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
 using Ve.Metrics.StatsDClient.CastleWindsor;
+using Ve.Metrics.StatsDClient.Tests.TestClasses;
 
 namespace Ve.Metrics.StatsDClient.Tests.CastleWindsor
 {
-    public class WindsorInterceptorsTestBase<T1 ,T2> where T1: BaseInterceptor<T2>, IInterceptor where T2: StatsDBase
+    public class WindsorInterceptorsTestBase<T1 ,T2> where T1: CastleInterceptor<T2>, IInterceptor where T2: StatsDBase
     {
         protected WindsorContainer Container;
         protected Mock<IVeStatsDClient> StatsdMock;

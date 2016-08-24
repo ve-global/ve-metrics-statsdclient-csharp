@@ -4,7 +4,7 @@ using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SimpleInjector
 {
-    public class StatsDTimingInterceptor : BaseInterceptor<StatsDTiming>, IInterceptor
+    public class StatsDTimingInterceptor : SimpleInjectorInterceptor<StatsDTiming>, IInterceptor
     {
         public StatsDTimingInterceptor(IVeStatsDClient client)
             : base(client)

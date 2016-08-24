@@ -44,6 +44,7 @@
     <Compile Include="Attributes\StatsDBase.cs" />
     <Compile Include="Attributes\StatsDCounting.cs" />
     <Compile Include="Attributes\StatsDTiming.cs" />
+    <Compile Include="InterceptorBase.cs" />
     <Compile Include="IStatsdConfig.cs" />
     <Compile Include="ITimingToken.cs" />
     <Compile Include="IVeStatsDClient.cs" />

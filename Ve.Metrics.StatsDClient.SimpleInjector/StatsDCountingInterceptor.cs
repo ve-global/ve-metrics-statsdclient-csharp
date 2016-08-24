@@ -3,7 +3,7 @@ using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.SimpleInjector
 {
-    public class StatsDCountingInterceptor : BaseInterceptor<StatsDCounting>, IInterceptor
+    public class StatsDCountingInterceptor : SimpleInjectorInterceptor<StatsDCounting>, IInterceptor
     {
         public StatsDCountingInterceptor(IVeStatsDClient client) : base(client)
         {
