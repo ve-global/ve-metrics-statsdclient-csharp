@@ -4,11 +4,12 @@ using Moq;
 using NUnit.Framework;
 using Ve.Metrics.StatsDClient.Abstract;
 using Ve.Metrics.StatsDClient.Abstract.Attributes;
+using Ve.Metrics.StatsDClient.Tests.TestClasses;
 using Ve.Metrics.StatsDClient.Unity;
 
 namespace Ve.Metrics.StatsDClient.Tests.Unity
 {
-    public class UnityInterceptorsTestBase<T1 ,T2> where T1: BaseInterceptor<T2>, IInterceptionBehavior where T2: StatsDBase
+    public class UnityInterceptorsTestBase<T1 ,T2> where T1: UnityInterceptor<T2>, IInterceptionBehavior where T2: StatsDBase
     {
         protected IUnityContainer Container;
         protected Mock<IVeStatsDClient> StatsdMock;

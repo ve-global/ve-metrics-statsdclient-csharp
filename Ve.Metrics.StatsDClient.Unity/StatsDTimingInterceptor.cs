@@ -6,7 +6,7 @@ using Ve.Metrics.StatsDClient.Abstract.Attributes;
 
 namespace Ve.Metrics.StatsDClient.Unity
 {
-    public class StatsDTimingInterceptor : BaseInterceptor<StatsDTiming>, IInterceptionBehavior
+    public class StatsDTimingInterceptor : UnityInterceptor<StatsDTiming>, IInterceptionBehavior
     {
         public StatsDTimingInterceptor(IVeStatsDClient client)
             : base(client)
