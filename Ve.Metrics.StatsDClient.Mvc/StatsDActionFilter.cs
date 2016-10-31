@@ -18,7 +18,10 @@ namespace Ve.Metrics.StatsDClient.Mvc
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            filterContext.HttpContext.Items.Add(StopwatchKey, Stopwatch.StartNew());
+            if (!filterContext.HttpContext.Items.Contains(StopwatchKey))
+            {
+                filterContext.HttpContext.Items.Add(StopwatchKey, Stopwatch.StartNew());
+            }
             base.OnActionExecuting(filterContext);
         }
 
