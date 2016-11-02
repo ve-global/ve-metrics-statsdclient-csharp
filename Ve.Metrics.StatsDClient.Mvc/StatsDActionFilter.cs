@@ -27,11 +27,16 @@ namespace Ve.Metrics.StatsDClient.Mvc
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            var stopwatch = (Stopwatch)filterContext.HttpContext.Items[StopwatchKey];
-            stopwatch.Stop();
+            var routeData = GetRouteData(filterContext.HttpContext);
 
-            _statsd.LogCount("request", GetRouteData(filterContext.HttpContext));
-            _statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(filterContext.HttpContext));
+            if (filterContext.HttpContext.Items.Contains(StopwatchKey))
+            {
+                var stopwatch = (Stopwatch)filterContext.HttpContext.Items[StopwatchKey];
+                stopwatch.Stop();
+                _statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, routeData);
+            }
+
+            _statsd.LogCount("request", routeData);
 
             if (filterContext.Exception != null)
             {
