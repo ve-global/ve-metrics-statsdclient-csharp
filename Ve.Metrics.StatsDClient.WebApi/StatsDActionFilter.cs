@@ -26,25 +26,33 @@ namespace Ve.Metrics.StatsDClient.WebApi
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            actionContext.Request.Properties.Add(StopwatchKey, Stopwatch.StartNew());
+            if (!actionContext.Request.Properties.ContainsKey(StopwatchKey))
+            {
+                actionContext.Request.Properties.Add(StopwatchKey, Stopwatch.StartNew());
+            }
+
             base.OnActionExecuting(actionContext);
         }
 
         public override Task OnActionExecutedAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
-            var stopwatch = (Stopwatch)actionExecutedContext.Request.Properties[StopwatchKey];
-            stopwatch.Stop();
+            var hasException = actionExecutedContext.Exception != null;
+            var routeData = GetRouteData(actionExecutedContext.ActionContext, hasException);
 
-            var hasException = false;
-            if (actionExecutedContext.Exception != null)
+            if (actionExecutedContext.Request.Properties.ContainsKey(StopwatchKey))
             {
-                hasException = true;
-                _statsd.LogCount("exceptions", GetRouteData(actionExecutedContext.ActionContext, hasException));
+                var stopwatch = (Stopwatch)actionExecutedContext.Request.Properties[StopwatchKey];
+                stopwatch.Stop();
+                _statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(actionExecutedContext.ActionContext, hasException));
             }
 
-            _statsd.LogCount("request", GetRouteData(actionExecutedContext.ActionContext, hasException));
-            _statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(actionExecutedContext.ActionContext, hasException));
+            if (hasException)
+            {
+                _statsd.LogCount("exceptions", routeData);
+            }
 
+            _statsd.LogCount("request", routeData);
+            
             return base.OnActionExecutedAsync(actionExecutedContext, cancellationToken);
         }
 
