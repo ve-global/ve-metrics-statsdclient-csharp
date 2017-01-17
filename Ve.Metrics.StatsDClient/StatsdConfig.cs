@@ -1,4 +1,6 @@
-﻿using Ve.Metrics.StatsDClient.Abstract;
+﻿using System;
+using System.Collections.Generic;
+using Ve.Metrics.StatsDClient.Abstract;
 
 namespace Ve.Metrics.StatsDClient
 {
@@ -37,5 +39,7 @@ namespace Ve.Metrics.StatsDClient
         }
 
         public string AppName { get; set; }
+
+        public Dictionary<string, string> CustomTags { get; set; }
     }
 }
