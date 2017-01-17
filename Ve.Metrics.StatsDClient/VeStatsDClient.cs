@@ -11,7 +11,7 @@ namespace Ve.Metrics.StatsDClient
         private static string _systemTags;
         private readonly IStatsd _statsd;
 
-        public VeStatsDClient(IStatsdConfig config) : this(new Statsd(config.Host, config.Port, config.AppName), config.Datacenter)
+        public VeStatsDClient(IStatsdConfig config) : this(new Statsd(config.Host, config.Port, config.AppName), config.Datacenter, config.CustomTags)
         {
             if (string.IsNullOrEmpty(config.Datacenter))
             {
@@ -24,10 +24,14 @@ namespace Ve.Metrics.StatsDClient
             }
         }
 
-        internal VeStatsDClient(IStatsd statsd, string datacenter)
+        internal VeStatsDClient(IStatsd statsd, string datacenter, Dictionary<string, string> customTags = null)
         {
             _statsd = statsd;
             _systemTags = $"host={Environment.MachineName.ToLower()},datacenter={datacenter}";
+            if (customTags != null)
+            {
+                _systemTags = $"{_systemTags},{string.Join(",", customTags.Select(x => x.Key + '=' + x.Value))}";
+            }
         }
 
         public void LogCount(string name)
