@@ -77,5 +77,50 @@ namespace Ve.Metrics.StatsDClient.Tests
             token.Dispose();
             _statsd.Verify(x => x.LogTiming(It.IsRegex("foo\\.bar\\,host\\=([A-Za-z0-9-]+)\\,datacenter\\=foo,foo\\=bar"), It.IsAny<long>()));
         }
+
+        [Test]
+        public void It_should_catch_runtime_errors_from_logcount()
+        {
+            _statsd.Setup(x => x.LogCount(It.IsAny<string>(), It.IsAny<int>()))
+                .Throws(new Exception("ohes noes, something broke"));
+
+            _client.LogCount("foo.bar");
+        }
+
+        [Test]
+        public void It_should_catch_runtime_errors_from_loggauge()
+        {
+            _statsd.Setup(x => x.LogGauge(It.IsAny<string>(), It.IsAny<int>()))
+                .Throws(new Exception("ohes noes, something broke"));
+
+            _client.LogCount("foo.bar");
+        }
+
+        [Test]
+        public void It_should_catch_runtime_errors_from_lograw()
+        {
+            _statsd.Setup(x => x.LogRaw(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<long?>()))
+                .Throws(new Exception("ohes noes, something broke"));
+
+            _client.LogCount("foo.bar");
+        }
+
+        [Test]
+        public void It_should_catch_runtime_errors_from_logcalendargram()
+        {
+            _statsd.Setup(x => x.LogCalendargram(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Throws(new Exception("ohes noes, something broke"));
+
+            _client.LogCount("foo.bar");
+        }
+
+        [Test]
+        public void It_should_catch_runtime_errors_from_logset()
+        {
+            _statsd.Setup(x => x.LogSet(It.IsAny<string>(), It.IsAny<int>()))
+                .Throws(new Exception("ohes noes, something broke"));
+
+            _client.LogCount("foo.bar");
+        }
     }
 }
