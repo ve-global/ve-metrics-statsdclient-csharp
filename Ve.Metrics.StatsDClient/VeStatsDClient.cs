@@ -34,11 +34,23 @@ namespace Ve.Metrics.StatsDClient
             }
         }
 
+        private static void RunSafe(Action thing)
+        {
+            try
+            {
+                thing();
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
+        }
+
         public void LogCount(string name)
         {
             LogCount(name, 1);
         }
-
+        
         public void LogCount(string name, Dictionary<string, string> tags)
         {
             LogCount(name, 1, tags);
@@ -46,17 +58,20 @@ namespace Ve.Metrics.StatsDClient
 
         public void LogCount(string name, int count, Dictionary<string, string> tags = null)
         {
-            _statsd.LogCount(BuildName(name, tags), count);
+            RunSafe(
+                () => _statsd.LogCount(BuildName(name, tags), count));
         }
 
         public void LogTiming(string name, long milliseconds, Dictionary<string, string> tags = null)
         {
-            _statsd.LogTiming(BuildName(name, tags), milliseconds);
+            RunSafe(() =>
+                _statsd.LogTiming(BuildName(name, tags), milliseconds));
         }
 
         public void LogTiming(string name, int milliseconds, Dictionary<string, string> tags = null)
         {
-            _statsd.LogTiming(BuildName(name, tags), milliseconds);
+            RunSafe(() =>
+                _statsd.LogTiming(BuildName(name, tags), milliseconds));
         }
 
         public ITimingToken LogTiming(string name)
@@ -71,22 +86,26 @@ namespace Ve.Metrics.StatsDClient
 
         public void LogGauge(string name, int value, Dictionary<string, string> tags = null)
         {
-            _statsd.LogGauge(BuildName(name, tags), value);
+            RunSafe(() =>
+                _statsd.LogGauge(BuildName(name, tags), value));
         }
 
         public void LogCalendargram(string name, int value, string period, Dictionary<string, string> tags = null)
         {
-            _statsd.LogCalendargram(BuildName(name, tags), value, period);
+            RunSafe(() =>
+                _statsd.LogCalendargram(BuildName(name, tags), value, period));
         }
 
         public void LogCalendargram(string name, string value, string period, Dictionary<string, string> tags = null)
         {
-            _statsd.LogCalendargram(BuildName(name, tags), value, period);
+            RunSafe(() =>
+                _statsd.LogCalendargram(BuildName(name, tags), value, period));
         }
 
         public void LogRaw(string name, int value, string period, long? epoch = null, Dictionary<string, string> tags = null)
         {
-            _statsd.LogRaw(BuildName(name, tags), value, epoch);
+            RunSafe(() =>
+                _statsd.LogRaw(BuildName(name, tags), value, epoch));
         }
 
         private static string BuildName(string name, Dictionary<string, string> tags)
