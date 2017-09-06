@@ -64,7 +64,8 @@ namespace Ve.Metrics.StatsDClient.Mvc
             {
                 { "code", context.Response.StatusCode.ToString() },
                 { "controller", ctr },
-                { "action", act }
+                { "action", act },
+                { "userAgent", context.Request.UserAgent}
             };
         }
     }

@@ -60,14 +60,19 @@ namespace Ve.Metrics.StatsDClient.WebApi
         {
             var action = actionContext?.ActionDescriptor?.ActionName?.ToLower() ?? "none";
             var controller = actionContext?.ControllerContext?.ControllerDescriptor?.ControllerName?.ToLower() ?? "none";
-            var statusCode = !hasException ? GetStatusCode(actionContext).ToString() : DEFAULT_RESPONSE_STATUS_CODE.ToString();
+            var statusCode = !hasException
+                ? GetStatusCode(actionContext).ToString()
+                : DEFAULT_RESPONSE_STATUS_CODE.ToString();
+            var userAgent = actionContext?.Request?.Headers?.UserAgent?.ToString();
 
-            return new Dictionary<string, string>()
+            var data = new Dictionary<string, string>()
             {
-                { "code", statusCode },
-                { "controller", controller },
-                { "action", action }
+                {"code", statusCode},
+                {"controller", controller},
+                {"action", action},
+                {"userAgent", userAgent}
             };
+            return data;
         }
 
         private static int GetStatusCode(HttpActionContext actionExecutedContext)
