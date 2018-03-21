@@ -43,17 +43,20 @@ namespace Ve.Metrics.StatsDClient.WebForms
                 if (fileExtension != null && fileExtension.Equals(".aspx"))
                 {
                     var stopwatch = (Stopwatch)context.Items[StopwatchKey];
-                    stopwatch.Stop();
-
-                    var hasException = false;
-                    if (context.Error != null)
+                    if (stopwatch != null)
                     {
-                        hasException = true;
-                        Statsd.LogCount("exceptions", GetRouteData(context, hasException));
-                    }
+                        stopwatch.Stop();
 
-                    Statsd.LogCount("request", GetRouteData(context, hasException));
-                    Statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(context, hasException));
+                        var hasException = false;
+                        if (context.Error != null)
+                        {
+                            hasException = true;
+                            Statsd.LogCount("exceptions", GetRouteData(context, hasException));
+                        }
+
+                        Statsd.LogCount("request", GetRouteData(context, hasException));
+                        Statsd.LogTiming("responses", stopwatch.ElapsedMilliseconds, GetRouteData(context, hasException));
+                    }
                 }
             }
         }
